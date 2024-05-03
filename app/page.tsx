@@ -1,4 +1,5 @@
 import { ChevronRightIcon } from "lucide-react";
+import Link from "next/link";
 import CategoryList from "./_components/category-list";
 import Header from "./_components/header";
 import ProductList from "./_components/products-list";
@@ -46,13 +47,15 @@ const Home = async () => {
       <div className="space-y-4 pt-6">
         <div className="flex items-center justify-between px-5">
           <h2 className="font-semibold">Pedidos Recomendados</h2>
-          <Button
-            variant="ghost"
-            className="h-fit text-primary hover:bg-transparent"
-          >
-            Ver todos
-            <ChevronRightIcon size={16} />
-          </Button>
+          <Link href="/products/recommend">
+            <Button
+              variant="ghost"
+              className="h-fit text-primary hover:bg-transparent"
+            >
+              Ver todos
+              <ChevronRightIcon size={16} />
+            </Button>
+          </Link>
         </div>
         <ProductList products={products} />
       </div>
@@ -67,13 +70,15 @@ const Home = async () => {
       <div className="space-y-4 py-6 pt-6">
         <div className="flex items-center justify-between px-5">
           <h2 className="font-semibold">Restaurantes Recomendados</h2>
-          <Button
-            variant="ghost"
-            className="h-fit text-primary hover:bg-transparent"
-          >
-            Ver todos
-            <ChevronRightIcon size={16} />
-          </Button>
+          <Link href="/restaurants/recommended">
+            <Button
+              variant="ghost"
+              className="h-fit text-primary hover:bg-transparent"
+            >
+              Ver todos
+              <ChevronRightIcon size={16} />
+            </Button>
+          </Link>
         </div>
         <RestaurantList />
       </div>
