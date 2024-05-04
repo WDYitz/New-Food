@@ -3,8 +3,6 @@ import { Prisma } from "@prisma/client";
 import { ReactNode, createContext, useContext, useMemo, useState } from "react";
 import { calculateProductsWithDiscount } from "../_helpers/price";
 
-
-
 export interface CartProduct
   extends Prisma.ProductGetPayload<{
     include: {
@@ -23,7 +21,11 @@ interface ICartContext {
   subtotalPrice: number;
   totalPrice: number;
   totalDiscount: number;
-  addProductToCart: (
+  addProductToCart: ({
+    product,
+    quantity,
+    emptyCart,
+  }: {
     product: Prisma.ProductGetPayload<{
       include: {
         restaurant: {
@@ -32,9 +34,10 @@ interface ICartContext {
           };
         };
       };
-    }>,
-    quantity: number,
-  ) => void;
+    }>;
+    quantity: number;
+    emptyCart?: boolean;
+  }) => void;
   decreaseProductQuantity: (productId: string) => void;
   increaseProductQuantity: (productId: string) => void;
   removeProductFromCart: (productId: string) => void;
@@ -55,9 +58,11 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [products, setProducts] = useState<CartProduct[]>([]);
 
   const subtotalPrice = useMemo(() => {
-    return products.reduce((acc, product) => {
-      return acc + Number(product.price) * product.quantity;
-    }, 0);
+    return (
+      products.reduce((acc, product) => {
+        return acc + Number(product.price) * product.quantity;
+      }, 0) + Number(products?.[0]?.restaurant.deliveryFee)
+    );
   }, [products]);
 
   const totalPrice = useMemo(() => {
@@ -99,7 +104,11 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
-  const addProductToCart = (
+  const addProductToCart = ({
+    product,
+    quantity,
+    emptyCart,
+  }: {
     product: Prisma.ProductGetPayload<{
       include: {
         restaurant: {
@@ -108,9 +117,14 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
           };
         };
       };
-    }>,
-    quantity: number,
-  ) => {
+    }>;
+    quantity: number;
+    emptyCart?: boolean;
+  }) => {
+    if (emptyCart) {
+      setProducts([]);
+    }
+
     // VERIFICAR SE O PRODUTA JA ESTA NO CARRINHO
     const isProductAlreadyOnCart = products.some(
       (cartProduct) => cartProduct.id === product.id,
