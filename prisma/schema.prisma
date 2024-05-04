@@ -8,13 +8,14 @@ datasource db {
 }
 
 model Restaurant {
-  id                  String     @id @default(uuid())
-  name                String
-  imageUrl            String
-  deliveryFee         Decimal    @db.Decimal(10, 2)
-  deliveryTimeMinutes Int
-  categories          Category[]
-  products            Product[]
+  id                         String     @id @default(uuid())
+  name                       String
+  imageUrl                   String
+  deliveryFee                Decimal    @db.Decimal(10, 2)
+  deliveryTimeMinutesMinutes Int
+  categories                 Category[]
+  products                   Product[]
+  Order                      Order[]
 }
 
 model Category {
@@ -37,6 +38,34 @@ model Product {
   restaurant         Restaurant @relation(fields: [restaurantId], references: [id])
   categoryId         String
   category           Category   @relation(fields: [categoryId], references: [id])
+  Order              Order[]
+  createdAt          DateTime   @default(now()) @map("created_at")
+}
+
+model Order {
+  id                  String      @id @default(uuid())
+  deliveryFee         Decimal     @db.Decimal(10, 2)
+  deliveryTimeMinutes Int
+  subtotalPrice       Decimal     @db.Decimal(10, 2)
+  totalPrice          Decimal     @db.Decimal(10, 2)
+  totalDiscount       Decimal     @db.Decimal(10, 2)
+  status              OrderStatus
+
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+  restaurantId String
+  user         User       @relation(fields: [userId], references: [id])
+  userId       String
+  products     Product[]
+
+  createAt DateTime @default(now()) @map("create_at")
+}
+
+enum OrderStatus {
+  CONFIRMED
+  CANCELED
+  PREPARING
+  DELIVERING
+  COMPLETED
 }
 
 model Account {
@@ -74,6 +103,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  Order         Order[]
 }
 
 model VerificationToken {

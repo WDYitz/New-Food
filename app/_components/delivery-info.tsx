@@ -4,7 +4,7 @@ import { formatCurrency } from "../_helpers/price";
 import { Card } from "./ui/card";
 
 type DeliveryInfoProsp = {
-  restaurant: Pick<Restaurant, "deliveryFee" | "deliveryTimeMinutes">;
+  restaurant: Pick<Restaurant, "deliveryFee" | "deliveryTimeMinutesMinutes">;
 };
 
 const DeliveryInfo = ({ restaurant }: DeliveryInfoProsp) => {
@@ -30,7 +30,7 @@ const DeliveryInfo = ({ restaurant }: DeliveryInfoProsp) => {
         </div>
 
         <p className="text-xs font-semibold">
-          {restaurant.deliveryTimeMinutes} min
+          {restaurant.deliveryTimeMinutesMinutes} min
         </p>
       </div>
     </Card>

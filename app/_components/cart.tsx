@@ -1,3 +1,6 @@
+import { OrderStatus } from "@prisma/client";
+import { useSession } from "next-auth/react";
+import { createOrder } from "../_actions/order";
 import { useCart } from "../_context/cart";
 import { formatCurrency } from "../_helpers/price";
 import CartItem from "./cart-item";
@@ -5,7 +8,29 @@ import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
 
 const Cart = () => {
+  const { data } = useSession();
   const { products, subtotalPrice, totalDiscount, totalPrice } = useCart();
+
+  const handleFinishOrderClick = async () => {
+    if (!data?.user) return;
+    const restaurant = products[0].restaurant;
+
+    await createOrder({
+      subtotalPrice,
+      totalDiscount,
+      totalPrice,
+      deliveryFee: restaurant.deliveryFee,
+      deliveryTimeMinutes: restaurant.deliveryTimeMinutes,
+      restaurant: {
+        connect: { id: restaurant.id },
+      },
+      status: OrderStatus.CONFIRMED,
+      user: {
+        connect: { id: data?.user.id },
+      },
+    });
+  };
+
   return (
     <div className="flex h-full flex-col justify-between py-5">
       {products.length > 0 ? (
@@ -44,7 +69,10 @@ const Cart = () => {
                 </div>
               </CardContent>
             </Card>
-            <Button className="mt-6 w-full font-semibold">
+            <Button
+              className="mt-6 w-full font-semibold"
+              onClick={handleFinishOrderClick}
+            >
               Finalizar Pedido
             </Button>
           </div>
