@@ -9,8 +9,8 @@ import Search from "./_components/search";
 import { Button } from "./_components/ui/button";
 import { db } from "./_lib/prisma";
 
-const Home = async () => {
-  const products = await db.product.findMany({
+const fetch = async () => {
+  const getProducts = await db.product.findMany({
     where: {
       discountPercentage: {
         gt: 0,
@@ -26,6 +26,30 @@ const Home = async () => {
     },
   });
 
+  const getBurguerCategory = await db.category.findFirst({
+    where: {
+      name: "Hambúrgueres",
+    },
+  });
+
+  const getPizzaCategory = await db.category.findFirst({
+    where: {
+      name: "Pizzas",
+    },
+  });
+
+  const [products, burguerCategory, pizzaCategory] = await Promise.all([
+    getProducts,
+    getBurguerCategory,
+    getPizzaCategory,
+  ]);
+
+  return { products, burguerCategory, pizzaCategory };
+};
+
+const Home = async () => {
+  const { products, burguerCategory, pizzaCategory } = await fetch();
+
   return (
     <>
       <Header />
@@ -38,10 +62,12 @@ const Home = async () => {
       </div>
 
       <div className="px-5 pt-6">
-        <PromoBanner
-          src="/promo-banner.png"
-          alt="até 30% de Desconto em pizzas"
-        />
+        <Link href={`/categories/${pizzaCategory?.id}/products`}>
+          <PromoBanner
+            src="/promo-banner.png"
+            alt="até 30% de Desconto em pizzas"
+          />
+        </Link>
       </div>
 
       <div className="space-y-4 pt-6">
@@ -62,10 +88,12 @@ const Home = async () => {
       </div>
 
       <div className="px-5 pt-6">
-        <PromoBanner
-          src="/promo-banner2.png"
-          alt="a partir de R$ 17,90 em lanches"
-        />
+        <Link href={`/categories/${burguerCategory?.id}/products`}>
+          <PromoBanner
+            src="/promo-banner2.png"
+            alt="a partir de R$ 17,90 em lanches"
+          />
+        </Link>
       </div>
 
       <div className="space-y-4 py-6 pt-6">
