@@ -2,6 +2,7 @@ import DeliveryInfo from "@/app/_components/delivery-info";
 import ProductList from "@/app/_components/products-list";
 import { db } from "@/app/_lib/prisma";
 import { StarIcon } from "lucide-react";
+import { getServerSession } from "next-auth";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import CartBanner from "./_components/cart-banner";
@@ -53,9 +54,19 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
     return notFound();
   }
 
+  const session = await getServerSession();
+  const userFavoriteRestaurant = await db.userFavoriteRestaurant.findMany({
+    where: {
+      userId: session?.user.id,
+    },
+  });
+
   return (
     <div>
-      <RestaurantImage restaurant={restaurant} />
+      <RestaurantImage
+        restaurant={restaurant}
+        userFavoriteRestaurants={userFavoriteRestaurant}
+      />
 
       {/* TITULO E PREÇO */}
       <div className="relative z-50 mt-[-1.5rem] flex items-center justify-between rounded-tl-[25px] rounded-tr-[25px] bg-white px-5 pt-5">

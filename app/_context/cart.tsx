@@ -37,7 +37,7 @@ interface ICartContext {
             deliveryFee: true;
             deliveryTimeMinutes: true;
           };
-        };
+        }
       };
     }>;
     quantity: number;
