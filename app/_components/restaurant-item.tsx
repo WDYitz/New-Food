@@ -1,6 +1,7 @@
 "use client";
 import { Restaurant, UserFavoriteRestaurant } from "@prisma/client";
 import { BikeIcon, HeartIcon, StarIcon, TimerIcon } from "lucide-react";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { toast } from "sonner";
@@ -12,28 +13,28 @@ import { Button } from "./ui/button";
 type RestaurantItemProps = {
   restaurant: Restaurant;
   className?: string;
-  userId?: string;
   userFavoriteRestaurant: UserFavoriteRestaurant[];
 };
 
 const RestaurantItem = ({
   restaurant,
   className,
-  userId,
   userFavoriteRestaurant,
 }: RestaurantItemProps) => {
+  const { data } = useSession();
+
   const isFavorite = userFavoriteRestaurant.some(
     (fav) => fav.restaurantId === restaurant.id,
   );
 
   const handleFavoriteClick = async () => {
-    if (!userId) return;
+    if (!data?.user.id) return;
     try {
-      await toggleFavoriteRestaurant(userId, restaurant.id);
+      await toggleFavoriteRestaurant(data.user.id, restaurant.id);
       toast.success(
         isFavorite
           ? "Restaurante removido dos favoritos"
-          : "Restaurant favoritado!",
+          : "Restaurante favoritado!",
       );
     } catch (error) {
       toast.error("Restaurante já foi favoritado ou ocorre um erro");
@@ -58,7 +59,7 @@ const RestaurantItem = ({
             <span className="text-xs font-semibold">5,0</span>
           </div>
 
-          {userId && (
+          {data?.user.id && (
             <Button
               size="icon"
               className={`absolute right-2 top-2 h-7 w-7 rounded-full bg-gray-700 ${isFavorite && "bg-primary"} hover:bg-gray-700`}
