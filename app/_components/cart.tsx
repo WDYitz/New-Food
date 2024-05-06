@@ -24,8 +24,8 @@ const Cart = () => {
   const { data } = useSession();
   const [isSubmitingLoading, setIsSubmitingLoading] = useState(false);
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
-  const { products, subtotalPrice, totalDiscounts, totalPrice, clearCart } =
-    useCart();
+
+  const { products, subtotalPrice, totalDiscounts, totalPrice, clearCart } = useCart();
 
   const handleFinishOrderClick = async () => {
     if (!data?.user) return;
@@ -47,6 +47,7 @@ const Cart = () => {
         user: {
           connect: { id: data?.user.id },
         },
+
         products: {
           createMany: {
             data: products.map((product) => ({
@@ -56,6 +57,7 @@ const Cart = () => {
           },
         },
       
+
       });
       clearCart();
     } catch (error) {
@@ -97,7 +99,9 @@ const Cart = () => {
 
                   <div className="flex items-center justify-between border-b pb-2 pt-2 text-xs">
                     <span className="text-muted-foreground">Descontos</span>
+
                     <span>{formatCurrency(totalDiscounts)}</span>
+
                   </div>
 
                   <div className="flex items-center justify-between pb-2 pt-2 text-xs font-semibold">
