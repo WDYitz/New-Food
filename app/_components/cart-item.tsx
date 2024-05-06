@@ -1,5 +1,6 @@
 import { ChevronLeftIcon, ChevronRightIcon, TrashIcon } from "lucide-react";
 import Image from "next/image";
+import { memo } from "react";
 import { CartProduct, useCart } from "../_context/cart";
 import {
   calculateProductsWithDiscount,
@@ -88,4 +89,4 @@ const CartItem = ({ cartProduct }: CartItemProps) => {
   );
 };
 
-export default CartItem;
+export default memo(CartItem);

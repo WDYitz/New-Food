@@ -29,6 +29,7 @@ type CartProps = {
 const Cart = ({ setIsOpen }: CartProps) => {
   const { data } = useSession();
   const { push } = useRouter();
+
   const [isSubmitingLoading, setIsSubmitingLoading] = useState(false);
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
 
