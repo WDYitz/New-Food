@@ -1,36 +1,26 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# New Santos Food (Client)
 
-## Getting Started
+Versão do cliente, existem 2 versões da mesma plataforma uma delas sendo a do Cliente e a outra um Dashboard de administrador onde você consegue visualizar todos os pedidos recentes juntamente com o lucro do restaurante (versao em desenvolvimento) e tambem para adicionar Produtos, Restaurantes e outros.
 
-First, run the development server:
+## 📦 Implantação
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Caso queira realizar um clone para sua maquina local execute o comando abaixo:
+
+```
+git clone 
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Construído com
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+* Prisma
+* Next
+* Tailwindcss
+* Postgresql
+* React
+* Shadcn
+* next-auth
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## ✒️ Autores
 
-## Learn More
+* [YR - Yitzhak Rodriguez]
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
