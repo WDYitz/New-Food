@@ -12,7 +12,8 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "New Santos Food",
-  description: "Restaurantes com produtos de alta qualidade com entregas rapidas",
+  description:
+    "Restaurantes com produtos de alta qualidade com entregas rapidas",
 };
 
 export default function RootLayout({
@@ -21,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body className={poppins.className}>
         <AuthProvider>
           <CartProvider>{children}</CartProvider>
