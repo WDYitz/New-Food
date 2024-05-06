@@ -7,7 +7,7 @@ Versão do cliente, existem 2 versões da mesma plataforma uma delas sendo a do 
 Caso queira realizar um clone para sua maquina local execute o comando abaixo:
 
 ```
-git clone 
+git clone https://github.com/WDYitz/New-Food.git
 ```
 
 ## 🛠️ Construído com
