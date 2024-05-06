@@ -121,6 +121,10 @@ const Header = () => {
                     <span className="block">Restaurantes Favoritos</span>
                   </Link>
                 </Button>
+
+                <div className="py-6">
+                  <Separator />
+                </div>
               </>
             )}
           </div>

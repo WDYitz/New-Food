@@ -1,15 +1,18 @@
 import { Toaster } from "@/app/_components/ui/sonner";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import { CartProvider } from "./_context/cart";
 import AuthProvider from "./_providers/auth";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+});
 
 export const metadata: Metadata = {
   title: "New Santos Food",
-  description: "Entregas rapidas e restaurantes de alta qualidade",
+  description: "Restaurantes com produtos de alta qualidade com entregas rapidas",
 };
 
 export default function RootLayout({
@@ -19,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={poppins.className}>
         <AuthProvider>
           <CartProvider>{children}</CartProvider>
           <Toaster />
