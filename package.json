@@ -26,10 +26,12 @@
     "lucide-react": "^0.368.0",
     "next": "14.2.1",
     "next-auth": "^4.24.7",
+    "prisma": "^5.13.0",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.2.2",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "update": "^0.7.4"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -42,7 +44,6 @@
     "postcss": "^8",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.14",
-    "prisma": "^5.12.1",
     "tailwindcss": "^3.4.1",
     "ts-node": "^10.9.2",
     "typescript": "^5"
