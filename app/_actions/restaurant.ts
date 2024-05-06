@@ -31,5 +31,5 @@ export const toggleFavoriteRestaurant = async (userId: string, restaurantId: str
   });
 
   revalidatePath("/")
-  revalidatePath("/favorite-restaurant")
+  revalidatePath("/favorite-restaurant", "page")
 }
