@@ -89,10 +89,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     return setProducts([]);
   };
 
-  const clearCart = () => {
-    return setProducts([]);
-  };
-
   const decreaseProductQuantity = (productId: string) => {
     return setProducts((prev) =>
       prev.map((cartProduct) => {

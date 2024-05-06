@@ -31,7 +31,7 @@ const Header = () => {
     <div className="flex justify-between px-5 pt-6">
       <div className="relative h-[30px] w-[100px]">
         <Link href="/">
-          <Image src="/fullstack-logo.png" alt="New Food" fill />
+          <Image src="/logo.png" alt="New Food" fill />
         </Link>
       </div>
 

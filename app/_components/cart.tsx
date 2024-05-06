@@ -25,7 +25,8 @@ const Cart = () => {
   const [isSubmitingLoading, setIsSubmitingLoading] = useState(false);
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
 
-  const { products, subtotalPrice, totalDiscounts, totalPrice, clearCart } = useCart();
+  const { products, subtotalPrice, totalDiscounts, totalPrice, clearCart } =
+    useCart();
 
   const handleFinishOrderClick = async () => {
     if (!data?.user) return;
@@ -56,8 +57,6 @@ const Cart = () => {
             })),
           },
         },
-      
-
       });
       clearCart();
     } catch (error) {
@@ -101,7 +100,6 @@ const Cart = () => {
                     <span className="text-muted-foreground">Descontos</span>
 
                     <span>{formatCurrency(totalDiscounts)}</span>
-
                   </div>
 
                   <div className="flex items-center justify-between pb-2 pt-2 text-xs font-semibold">
@@ -138,12 +136,14 @@ const Cart = () => {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel disabled={isConfirmDialogOpen}>
+            <AlertDialogCancel>Cancelar</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={handleFinishOrderClick}
+              disabled={isSubmitingLoading}
+            >
               {isSubmitingLoading && (
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               )}
-            </AlertDialogCancel>
-            <AlertDialogAction onClick={handleFinishOrderClick}>
               Finalizar
             </AlertDialogAction>
           </AlertDialogFooter>
