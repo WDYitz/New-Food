@@ -8,8 +8,11 @@ type CategoryItemProps = {
 
 const CategoryItem = ({ category }: CategoryItemProps) => {
   return (
-    <Link href={`/categories/${category.id}/products`}>
-      <div className="flex items-center justify-center gap-3 rounded-full bg-white px-6 py-3 shadow-md">
+    <Link
+      href={`/categories/${category.id}/products`}
+      className="min-w-[150px] h-16"
+    >
+      <div className="flex h-14 items-center justify-center gap-3 rounded-full bg-white px-6 shadow-md">
         <Image
           src={category.imageUrl}
           alt={category.name}
