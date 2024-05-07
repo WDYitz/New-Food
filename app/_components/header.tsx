@@ -45,7 +45,7 @@ const Header = () => {
             <MenuIcon />
           </Button>
         </SheetTrigger>
-        <SheetContent className="w-[80vw]">
+        <SheetContent className="w-[80vw] md:w-[40vw]">
           <SheetHeader>
             <SheetTitle className="text-left">Menu</SheetTitle>
           </SheetHeader>
