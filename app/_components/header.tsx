@@ -28,7 +28,7 @@ const Header = () => {
   const handleSignInClick = () => signIn();
 
   return (
-    <div className="flex justify-between px-5 pt-6">
+    <div className="flex justify-between px-5 pt-6 md:px-20 md:pb-6">
       <div className="relative h-[30px] w-[100px]">
         <Link href="/">
           <Image src="/logo.png" alt="New Food" fill sizes="100%" />

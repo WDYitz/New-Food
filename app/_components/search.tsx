@@ -2,10 +2,11 @@
 import { SearchIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { FormEventHandler, useState } from "react";
+import { cn } from "../_lib/utils";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
-const Search = () => {
+const Search = ({ className }: { className?: string }) => {
   const router = useRouter();
   const [search, setSearch] = useState("");
 
@@ -22,14 +23,24 @@ const Search = () => {
   };
 
   return (
-    <form className="flex gap-2" onSubmit={handleSearchSubmit}>
+    <form
+      className={cn(
+        "flex gap-2 md:relative md:h-20 md:w-[540px]  md:items-center md:gap-0 md:bg-white md:px-6 md:rounded-lg",
+        className,
+      )}
+      onSubmit={handleSearchSubmit}
+    >
       <Input
         placeholder="Buscar Restaurantes"
         className="border-none"
         onChange={handleChange}
         value={search}
       />
-      <Button size="icon" className="h-10 w-10" type="submit">
+      <Button
+        size="icon"
+        className="h-10 w-10 md:absolute md:right-[25px] md:bg-yellow-500"
+        type="submit"
+      >
         <SearchIcon size="18" />
       </Button>
     </form>
