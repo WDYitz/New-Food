@@ -10,6 +10,7 @@ import {
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import { cn } from "../_lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
@@ -21,14 +22,19 @@ import {
   SheetTrigger,
 } from "./ui/sheet";
 
-const Header = () => {
+const Header = ({ className }: { className?: string }) => {
   const { data } = useSession();
 
   const handleSignOutClick = () => signOut();
   const handleSignInClick = () => signIn();
 
   return (
-    <div className="flex justify-between px-5 pt-6 md:px-20 md:pb-6">
+    <div
+      className={cn(
+        "flex justify-between px-5 pt-6 md:px-20 md:pb-6",
+        className,
+      )}
+    >
       <div className="relative h-[30px] w-[100px]">
         <Link href="/">
           <Image src="/logo.png" alt="New Food" fill sizes="100%" />

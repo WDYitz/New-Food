@@ -25,6 +25,7 @@ import {
   calculateProductsWithDiscount,
   formatCurrency,
 } from "@/app/_helpers/price";
+import { cn } from "@/app/_lib/utils";
 import { Prisma } from "@prisma/client";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import Image from "next/image";
@@ -41,11 +42,13 @@ type ProductDetailsProps = {
       restaurant: true;
     };
   }>[];
+  className?: string;
 };
 
 const ProductDetails = ({
   product,
   complementaryProducts,
+  className,
 }: ProductDetailsProps) => {
   const [quantity, setQuantity] = useState(1);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -83,7 +86,12 @@ const ProductDetails = ({
 
   return (
     <>
-      <div className="relative mt-[-1.5rem] rounded-tl-[25px] rounded-tr-[25px] bg-white py-5">
+      <div
+        className={cn(
+          "md:rounder-none relative mt-[-1.5rem] rounded-tl-[25px] rounded-tr-[25px] bg-white py-5 md:mt-0 md:rounded-lg md:border-[1px]",
+          className,
+        )}
+      >
         <div className="flex items-center gap-[0.3375rem] px-5">
           <div className="relative h-6 w-6">
             <Image
@@ -144,12 +152,12 @@ const ProductDetails = ({
         </div>
 
         {/* PRODUDOS EXTRA */}
-        <div className="mt-6 space-y-3 px-5">
-          <h3 className="px-5 font-semibold">Sucos</h3>
+        <div className="mt-6 space-y-3 px-5 md:hidden">
+          <h3 className="px-5 font-semibold md:px-0">Sucos</h3>
           <ProductList products={complementaryProducts} />
         </div>
 
-        <div className="mt-6 px-5">
+        <div className="mt-6 px-5 md:mt-10">
           <Button
             className="w-full font-semibold"
             onClick={handleAddToCartClick}
