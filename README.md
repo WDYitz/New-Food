@@ -23,6 +23,10 @@ git clone https://github.com/WDYitz/New-Food.git
 * Shadcn
 * next-auth
 
+## 📷 Imagens do projeto (Mobile)
+
+
+
 ## ✒️ Autores
 
 * [YR - Yitzhak Rodriguez]
