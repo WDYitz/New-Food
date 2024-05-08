@@ -33,7 +33,7 @@ const Restaurants = ({ userFavoriteRestaurants }: RestaurantesProps) => {
   return (
     <>
       <Header />
-      <div className="px-5 py-6 md:px-20">
+      <div className="px-5 py-6 md:px-20 lg:px-36">
         <h2 className="mb-6 text-lg font-semibold">Restaurantes encontrados</h2>
         <div className="flex flex-col gap-6 md:grid md:grid-cols-3">
           {restaurants.map((restaurant) => (
