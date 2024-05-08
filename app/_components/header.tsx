@@ -43,7 +43,7 @@ const Header = ({ className }: { className?: string }) => {
   return (
     <div
       className={cn(
-        "flex justify-between px-5 pt-6 md:px-20 md:pb-6",
+        "flex justify-between px-5 pt-6 md:px-20 md:pb-6 lg:px-36",
         className,
       )}
     >

@@ -75,8 +75,7 @@ const config = {
     },
     screens: {
       'md': { 'min': '950px' },
-      'lg': '1100px',
-      'xl': '1400px',
+      'lg': '1300px',
     }
   },
   plugins: [require("tailwindcss-animate")],
