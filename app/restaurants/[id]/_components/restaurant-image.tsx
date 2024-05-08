@@ -2,6 +2,7 @@
 import { Button } from "@/app/_components/ui/button";
 import { isRestaurantFavorite } from "@/app/_helpers/restaurant";
 import { useFavoriteRestaurant } from "@/app/_hooks/useFavoriteRestaurant";
+import { cn } from "@/app/_lib/utils";
 import { Restaurant, UserFavoriteRestaurant } from "@prisma/client";
 import { ChevronLeftIcon, HeartIcon } from "lucide-react";
 import { useSession } from "next-auth/react";
@@ -11,11 +12,13 @@ import { useRouter } from "next/navigation";
 type RestaurantImageProps = {
   restaurant: Pick<Restaurant, "id" | "name" | "imageUrl">;
   userFavoriteRestaurants: UserFavoriteRestaurant[];
+  className?: string;
 };
 
 const RestaurantImage = ({
   restaurant,
   userFavoriteRestaurants,
+  className,
 }: RestaurantImageProps) => {
   const { data } = useSession();
 
@@ -35,17 +38,17 @@ const RestaurantImage = ({
   const handleBackClick = () => router.back();
 
   return (
-    <div className="relative h-[368px] w-full">
+    <div className={cn("relative h-[368px] w-full md:min-h-full", className)}>
       <Image
         src={restaurant.imageUrl}
         alt={restaurant.name}
         fill
         sizes="100%"
-        className="object-cover"
+        className="object-cover md:rounded-lg"
       />
 
       <Button
-        className="absolute left-2 top-2 rounded-full bg-white text-foreground hover:text-white"
+        className="absolute left-2 top-2 rounded-full bg-white text-foreground hover:text-white md:hidden"
         size="icon"
         onClick={handleBackClick}
       >
