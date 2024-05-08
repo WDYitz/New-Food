@@ -22,9 +22,9 @@ const RecommendedProductsPage = async () => {
   return (
     <>
       <Header />
-      <div className="px-5 py-6 md:px-20">
+      <div className="xlg:px-48 px-5 py-6 md:px-20 lg:px-36">
         <h2 className="mb-6 text-lg font-semibold">Pedidos Recomendados</h2>
-        <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-6">
           {products.map((product) => (
             <ProductItem
               key={product.id}

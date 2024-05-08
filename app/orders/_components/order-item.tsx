@@ -22,8 +22,8 @@ const OrderItem = ({ order }: OrderItemProps) => {
   const { push } = useRouter();
 
   return (
-    <Card className="md:m-0 ">
-      <CardContent className="space-y-3 p-5 md:min-h-full">
+    <Card className="md:mt-0 md:min-h-full">
+      <CardContent className="space-y-3 p-5">
         <div
           className={`w-fit rounded-full bg-[#EEEEEE] px-2 py-1 text-muted-foreground ${getOrderStatus(order.status).color}`}
         >

@@ -57,7 +57,7 @@ const RestaurantImage = ({
 
       <Button
         size="icon"
-        className={`absolute right-4 top-4 rounded-full bg-gray-700 ${isFavorite && "bg-primary"}`}
+        className={`absolute right-4 top-4 rounded-full bg-gray-700 ${isFavorite && "bg-primary"} lg:h-12 lg:w-12`}
         onClick={handleFavoriteClick}
       >
         <HeartIcon size={16} className="fill-white" />

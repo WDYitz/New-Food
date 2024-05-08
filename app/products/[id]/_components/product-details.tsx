@@ -157,7 +157,7 @@ const ProductDetails = ({
           <ProductList products={complementaryProducts} />
         </div>
 
-        <div className="mt-6 px-5 md:mt-10">
+        <div className="mt-6 px-5 md:mt-10 lg:mt-20">
           <Button
             className="w-full font-semibold"
             onClick={handleAddToCartClick}
@@ -168,7 +168,7 @@ const ProductDetails = ({
       </div>
 
       <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
-        <SheetContent className="w-[90vw]">
+        <SheetContent className="w-[90vw] md:w-[40vw] lg:w-[30vw]">
           <SheetHeader>
             <SheetTitle className="text-left">Sacola</SheetTitle>
           </SheetHeader>

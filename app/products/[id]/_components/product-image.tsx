@@ -23,7 +23,7 @@ const ProductImage = ({ product, className }: ProductImageProps) => {
         alt={product.name}
         fill
         sizes="100%"
-        className="max-w-[100%] object-cover md:rounded-lg"
+        className="max-w-[100%] object-cover md:rounded-lg lg:max-h-[50%]"
       />
 
       <Button

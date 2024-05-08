@@ -25,10 +25,10 @@ const MyOrdersPage = async () => {
   return (
     <>
       <Header />
-      <div className="px-5 py-6 md:px-20">
+      <div className="xlg:px-48 px-5 py-6 md:px-20 lg:px-36">
         <h2 className="font-semibold md:mb-6">Meus Pedidos</h2>
 
-        <div className="md:grod-rows-auto space-y-4 md:grid md:grid-cols-3 md:gap-4">
+        <div className="space-y-4 md:grid md:grid-cols-3 md:gap-4 md:space-y-0 lg:grid-cols-4">
           {orders.map((order) => {
             return <OrderItem key={order.id} order={order} />;
           })}

@@ -68,7 +68,7 @@ const Cart = ({ setIsOpen }: CartProps) => {
       });
 
       clearCart();
-      toast(`Pedido finalizado com sucesso!`, {
+      toast.success(`Pedido finalizado com sucesso!`, {
         description: "Voce pode acompanhar o seu pedido na tela seus pedidos",
         action: {
           label: "Meus pedidos",
@@ -126,7 +126,7 @@ const Cart = ({ setIsOpen }: CartProps) => {
                 </CardContent>
               </Card>
               <Button
-                className="mt-6 w-full font-semibold"
+                className="mt-6 w-full font-semibold lg:py-4"
                 disabled={isSubmitingLoading}
                 onClick={() => setIsConfirmDialogOpen(true)}
               >

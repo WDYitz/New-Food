@@ -43,7 +43,7 @@ const Header = ({ className }: { className?: string }) => {
   return (
     <div
       className={cn(
-        "flex justify-between px-5 pt-6 md:px-20 md:pb-6 lg:px-36",
+        "xlg:px-48 flex justify-between px-5 pt-6 md:px-20 md:pb-6 lg:px-36",
         className,
       )}
     >
@@ -63,7 +63,7 @@ const Header = ({ className }: { className?: string }) => {
             <MenuIcon />
           </Button>
         </SheetTrigger>
-        <SheetContent className="w-[80vw] font-semibold md:w-[40vw]">
+        <SheetContent className="w-[80vw] font-semibold md:w-[40vw] lg:w-[20vw]">
           <SheetHeader>
             <SheetTitle className="text-left">Menu</SheetTitle>
           </SheetHeader>
@@ -166,8 +166,8 @@ const Header = ({ className }: { className?: string }) => {
               Deseja mesmo sair da plataforma?
             </AlertDialogDescription>
           </AlertDialogHeader>
-          <AlertDialogFooter className="grid grid-cols-2 grid-rows-1 gap-2 justify-center items-center">
-            <AlertDialogCancel className="border-0 bg-gray-200 mt-0">
+          <AlertDialogFooter className="grid grid-cols-2 grid-rows-1 items-center justify-center gap-2">
+            <AlertDialogCancel className="mt-0 border-0 bg-gray-200">
               Cancelar
             </AlertDialogCancel>
             <AlertDialogAction onClick={handleSignOutClick}>

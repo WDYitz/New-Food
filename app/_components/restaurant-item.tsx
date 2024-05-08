@@ -63,7 +63,7 @@ const RestaurantItem = ({
           {data?.user.id && (
             <Button
               size="icon"
-              className={`absolute right-2 top-2 h-7 w-7 rounded-full bg-gray-700 ${isFavorite && "bg-primary"} hover:bg-gray-700`}
+              className={`absolute right-2 top-2 h-7 w-7 rounded-full bg-gray-700 ${isFavorite && "bg-primary"} hover:bg-gray-700 lg:h-10 lg:w-10`}
               onClick={handleFavoriteClick}
             >
               <HeartIcon size={16} />
