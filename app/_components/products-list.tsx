@@ -15,7 +15,7 @@ type ProductListProps = {
 
 const ProductList = ({ products }: ProductListProps) => {
   return (
-    <div className="flex gap-4 overflow-x-auto px-5 md:px-0 [&::-webkit-scrollbar]:hidden  lg:flex-wrap">
+    <div className="flex gap-4 overflow-x-auto px-5 md:px-0 [&::-webkit-scrollbar]:hidden lg:flex-wrap">
       {products.map((product) => (
         <ProductItem key={product.id} product={product} />
       ))}
