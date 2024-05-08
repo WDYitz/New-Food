@@ -10,7 +10,18 @@ import {
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { cn } from "../_lib/utils";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "./ui/alert-dialog";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
@@ -24,6 +35,7 @@ import {
 
 const Header = ({ className }: { className?: string }) => {
   const { data } = useSession();
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   const handleSignOutClick = () => signOut();
   const handleSignInClick = () => signIn();
@@ -51,7 +63,7 @@ const Header = ({ className }: { className?: string }) => {
             <MenuIcon />
           </Button>
         </SheetTrigger>
-        <SheetContent className="w-[80vw] md:w-[40vw]">
+        <SheetContent className="w-[80vw] font-semibold md:w-[40vw]">
           <SheetHeader>
             <SheetTitle className="text-left">Menu</SheetTitle>
           </SheetHeader>
@@ -89,7 +101,7 @@ const Header = ({ className }: { className?: string }) => {
           )}
 
           <div className="py-6">
-            <Separator />
+            <Separator className="bg-gray-300" />
           </div>
 
           <div className="space-y-2">
@@ -129,28 +141,41 @@ const Header = ({ className }: { className?: string }) => {
                 </Button>
 
                 <div className="py-6">
-                  <Separator />
+                  <Separator className="bg-gray-300" />
                 </div>
+
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start space-x-3 rounded-full text-sm font-normal"
+                  onClick={() => setIsLoggingOut(true)}
+                >
+                  <LogOutIcon size={16} />
+                  <span className="block">Sair da conta</span>
+                </Button>
               </>
             )}
           </div>
-
-          <div className="py-6">
-            <Separator />
-          </div>
-
-          {data?.user && (
-            <Button
-              variant="ghost"
-              className="w-full justify-start space-x-3 rounded-full text-sm font-normal"
-              onClick={handleSignOutClick}
-            >
-              <LogOutIcon size={16} />
-              <span className="block">Sair da conta</span>
-            </Button>
-          )}
         </SheetContent>
       </Sheet>
+
+      <AlertDialog open={isLoggingOut} onOpenChange={setIsLoggingOut}>
+        <AlertDialogContent className="rounded-lg">
+          <AlertDialogHeader>
+            <AlertDialogTitle>Sair da conta</AlertDialogTitle>
+            <AlertDialogDescription>
+              Deseja mesmo sair da plataforma?
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter className="grid grid-cols-2 grid-rows-1 gap-2 justify-center items-center">
+            <AlertDialogCancel className="border-0 bg-gray-200 mt-0">
+              Cancelar
+            </AlertDialogCancel>
+            <AlertDialogAction onClick={handleSignOutClick}>
+              Sair
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 };
