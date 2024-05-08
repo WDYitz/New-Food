@@ -1,7 +1,6 @@
-# New Santos Food (Client)
+# New Santos Food (Cliente)
 
-## Versão mobile only (versão desktop em desenvolvimento)
-### Obs: Todos os produtos e restaurantes já cadastrados são fictícios
+### Obs: Alguns dos produtos e restaurantes já cadastrados são fictícios e possivelmente estão repetidos
 
 Versão do cliente, existem 2 versões da mesma plataforma uma delas sendo a do Cliente e a outra um Dashboard de administrador onde você consegue visualizar todos os pedidos recentes juntamente com o lucro do restaurante (versao em desenvolvimento) e tambem para adicionar Produtos, Restaurantes e outros.
 
