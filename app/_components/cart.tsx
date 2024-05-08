@@ -37,7 +37,11 @@ const Cart = ({ setIsOpen }: CartProps) => {
     useCart();
 
   const handleFinishOrderClick = async () => {
-    if (!data?.user) return;
+    if (!data?.user) {
+      toast.warning(`Parece que você ainda não esta logado`, {
+        description: "É preciso estar logado para colocar um item em sua sacola",
+      });
+    }
 
     const restaurant = products[0].restaurant;
 

@@ -53,7 +53,7 @@ const Home = async () => {
   return (
     <>
       <Header />
-      <div className="px-5 pt-6 md:h-96 md:bg-primary md:px-20 md:pt-0 lg:px-36 xlg:px-48">
+      <div className="xlg:px-48 px-5 pt-6 md:h-96 md:bg-primary md:px-20 md:pt-0 lg:px-36">
         <div className="md:flex md:h-full md:flex-col md:items-start md:justify-center">
           <h2 className="hidden md:block md:text-[30px] md:font-extrabold md:text-white">
             Está com fome?
@@ -66,7 +66,7 @@ const Home = async () => {
         </div>
       </div>
 
-      <div className="px-5 pt-6 md:px-20 md:pb-4 md:pt-10 lg:px-36 xlg:px-48">
+      <div className="xlg:px-48 px-5 pt-6 md:px-20 md:pb-4 md:pt-10 lg:px-36">
         <CategoryList />
       </div>
 
@@ -79,7 +79,7 @@ const Home = async () => {
         </Link>
       </div>
 
-      <div className="space-y-4 pt-6 md:px-20 md:pb-6 lg:px-36 xlg:px-48">
+      <div className="xlg:px-48 space-y-4 pt-6 md:px-20 md:pb-6 lg:px-36">
         <div className="flex items-center justify-between px-5 md:px-0">
           <h2 className="font-semibold">Pedidos Recomendados</h2>
           <Button
@@ -93,10 +93,10 @@ const Home = async () => {
             </Link>
           </Button>
         </div>
-        <ProductList products={products} />
+        <ProductList products={products} className="lg:flex" />
       </div>
 
-      <div className="px-5 pt-6 md:flex md:gap-4 md:px-20 lg:px-36 md:justify-between xlg:px-48">
+      <div className="xlg:px-48 px-5 pt-6 md:flex md:justify-between md:gap-4 md:px-20 lg:px-36">
         <Link
           href={`/categories/${pizzaCategory?.id}/products`}
           className="hidden md:block"
@@ -114,7 +114,7 @@ const Home = async () => {
         </Link>
       </div>
 
-      <div className="space-y-4 py-6 pt-6 md:px-20 lg:px-36 xlg:px-48">
+      <div className="xlg:px-48 space-y-4 py-6 pt-6 md:px-20 lg:px-36">
         <div className="flex items-center justify-between px-5 md:px-0">
           <h2 className="font-semibold ">Restaurantes Recomendados</h2>
           <Button

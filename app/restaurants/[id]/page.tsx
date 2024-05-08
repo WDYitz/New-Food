@@ -115,7 +115,7 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
         <div className="mt-6 space-y-4 md:col-span-4 md:row-span-1 lg:col-span-6 lg:row-span-3">
           {/* TODO!! MOSTRAR PRODUTOS MAIS PEDIDOS*/}
           <h2 className="px-5 font-semibold md:px-0">Mais Pedidos</h2>
-          <ProductList products={restaurant.products} />
+          <ProductList products={restaurant.products} className="lg:flex-wrap"/>
         </div>
 
         {restaurant.categories.map((category) => (
@@ -125,7 +125,7 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
           >
             {/* TODO!! MOSTRAR PRODUCTOS MAIS PEDIDOS*/}
             <h2 className="px-5 font-semibold md:px-0">{category.name}</h2>
-            <ProductList products={category.products} />
+            <ProductList products={category.products} className="lg:flex-wrap"/>
           </div>
         ))}
 
