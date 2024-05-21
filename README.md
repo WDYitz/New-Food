@@ -6,10 +6,15 @@ Versão do cliente, existem 2 versões da mesma plataforma uma delas sendo a do 
 
 ## 📦 Implementação
 
-Caso queira realizar um clone para sua maquina local execute o comando abaixo:
+Caso queira realizar um clone para sua maquina local execute os comandos abaixo:
 
 ```
 git clone https://github.com/WDYitz/New-Food.git
+```
+
+Instale todas as dependencias:
+```
+npm install 
 ```
 
 ## 🛠️ Construído com
